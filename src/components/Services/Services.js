@@ -20,7 +20,7 @@ const Services = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
-           
+            <button className="btn mb-5">See All Services</button>
         </div>
     );
 };
