@@ -12,7 +12,7 @@ const Home = () => {
             <div className='grid md:grid-cols-2 mt-12 items-center justify-center'>
                 <div>
                     <h2 className='text-3xl font-bold mb-6'>Welcome To<br /> <span className='text-5xl text-blue-800'>Your Desire Destination</span></h2>
-                    <p className='text-xl font-bold mb-5'>Take Service From Us<br/> And Make Your Tour Memorable</p>
+                    <p className='text-xl font-bold mb-5'>Take Service From Us<br/> What Ever You Want</p>
                     <button className="btn mb-8">Services</button>
                 </div>
                 <div>
