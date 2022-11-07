@@ -32,6 +32,12 @@ const Home = () => {
                 </div>
                 </div>
             </div>
+            <div>
+                <h2 className='mt-16 font-bold text-3xl'>About Us</h2>
+                <h2 className='mt-5 mb-3 text-xl font-semibold'>TravelsCare is a travel company that is on an endless journey <br/>to make your travel experiences happier with tech-driven innovations.</h2>
+                <h2 className='mt-5 mb-3 text-xl font-semibold'>We Are inspired by the explorers like you, who go every day with the passion of discovering the unseen.<br/> Wherever you want to travel, find hotels, flights, buses, tours, and more in TravelsCare and get ready for your explorations.<br/><br/>
+                So, what are you waiting for?</h2>
+            </div>
             <Services></Services>
             <div className='mt-16 bg-blue-700 w-3/4 conatiner mx-auto p-14 rounded-lg mb-10'>
                 <h2 className='font-bold text-2xl text-white'>Subscribe Our News Letter</h2>
