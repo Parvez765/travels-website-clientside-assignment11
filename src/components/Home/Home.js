@@ -39,7 +39,7 @@ const Home = () => {
                 So, what are you waiting for?</h2>
             </div>
             <Services></Services>
-            <div className='mt-16 bg-blue-700 w-3/4 conatiner mx-auto p-14 rounded-lg mb-10'>
+            <div className='mt-16 bg-blue-600 w-3/4 conatiner mx-auto p-14 rounded-lg mb-10'>
                 <h2 className='font-bold text-2xl text-white'>Subscribe Our News Letter</h2>
                 <input type="text" className='mt-5 mr-4 px-10 py-3 rounded-lg' placeholder='Enter Your Email' />
                 <button className='btn'>Subscribe</button>
