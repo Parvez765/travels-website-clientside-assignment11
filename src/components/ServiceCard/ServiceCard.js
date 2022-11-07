@@ -7,7 +7,7 @@ const ServiceCard = ({ service }) => {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <PhotoProvider>
-                <PhotoView src="/1.jpg">
+                <PhotoView src={img}>
                 <figure><img src={img} alt="Shoes" /></figure>
                 </PhotoView>
             </PhotoProvider>
@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
                 <p className='text-left'>Price: {price}</p>
                 <p className='text-left'>{description.slice(0, 100)+ "..."}</p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">See Details</button>
+                
                 </div>
             </div>
         </div>

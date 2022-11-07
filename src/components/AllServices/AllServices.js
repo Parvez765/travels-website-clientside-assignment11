@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import AllServiceCard from '../AllServiceCard/AllServiceCard';
 
 
@@ -14,7 +14,10 @@ const AllServices = () => {
                 {
                     allservices.map(service => <AllServiceCard key={service._id} service={service}></AllServiceCard>)
                 }
-           </div>
+            </div>
+            <Link to="/">
+            <button className='btn mb-10'>Go To Home</button>
+            </Link>
         </div>
     );
 };
