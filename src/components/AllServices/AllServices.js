@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import AllServiceCard from '../AllServiceCard/AllServiceCard';
 
+
 const AllServices = () => {
     const allservices = useLoaderData()
     console.log(allservices)
