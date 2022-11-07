@@ -25,7 +25,7 @@ const ServiceDetail = () => {
                         <Link to="/allservices">
                         <button className="btn mr-10">See All Services</button>
                         </Link>
-                    <button className="btn btn-primary">Give Review</button>
+                    <button className="btn btn-primary">See Review</button>
                     </div>
                 </div>
             </div>
