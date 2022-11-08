@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { AuthProvider } from '../../context/AuthContext';
 
 const ServiceDetail = () => {
     const allservices = useLoaderData()
+    const { user } = useContext(AuthProvider)
+    
+    const handleReview = () => {
+        if (!user?.email) {
+            alert("Please Login To Add A Review")
+        }
+    }
    
     return (
         <div>
@@ -25,7 +33,7 @@ const ServiceDetail = () => {
                         <Link to="/allservices">
                         <button className="btn mr-10">See All Services</button>
                         </Link>
-                    <button className="btn btn-primary">See Review</button>
+                   <Link to="/review"><button onClick={handleReview} className="btn btn-primary">See Review</button></Link>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ export const AuthProvider = createContext()
 
 const AuthContext = ({ children }) => {
     const [user, setUser] = useState()
+    const [loading, setLoading] = useState(true)
 
     // Create New User
 
@@ -32,13 +33,14 @@ const AuthContext = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
+            setLoading(false)
         })
         return () => {
             unsubscribe()
         }
     }, [])
     
-    const authInfo = {user, createUser, loginWithExistingUser, loginWithGoogle, userLogout}
+    const authInfo = {user, createUser, loginWithExistingUser, loginWithGoogle, userLogout, loading}
 
     return (
         <AuthProvider.Provider value={authInfo}>

@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import MyReview from "../components/MyReview/MyReview";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Register from "../components/Register/Register";
+import Review from "../components/Review/Review";
 import ServiceDetail from "../components/ServiceDetail/ServiceDetail";
 import Main from "../Layout/Main";
 
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: "/addservice",
                 element: <PrivateRoute><AddService></AddService></PrivateRoute>
+            },
+            {
+                path: "/review", 
+                element: <PrivateRoute><Review></Review></PrivateRoute>
             }
         ]
     }

@@ -1,10 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthContext';
 
 const Login = () => {
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
+    const navigate = useNavigate()
 
     const { loginWithExistingUser, loginWithGoogle } = useContext(AuthProvider)
 
@@ -21,6 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 alert("User Logged In Successfully")
+                navigate(from, {replace:true})
                 form.reset()
             })
             .catch(err => console.error(err))
@@ -32,6 +36,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 alert("User Created Successfully")
+                navigate(from, {replace:true})
             })
             .catch(err=> console.error(err))
         }
