@@ -30,14 +30,16 @@ const Register = () => {
                 form.reset()
             })
         .catch(err=> console.log(err))
+    }
+    
+    const handleGoogleLogin = () => {
         
         loginWithGoogle(googleProvider)
-            .then(result => {
-                const user = result.user
-                alert("User Created Successfully")
-            })
-        .catch(err=> console.error(err))
-
+        .then(result => {
+            const user = result.user
+            alert("User Created Successfully")
+        })
+    .catch(err=> console.error(err))
     }
     
 
@@ -82,13 +84,13 @@ const Register = () => {
                         <div className="form-control mt-6">
                         <button className="btn btn-primary">Register Now</button>
                             </div>
-                            <button  className='googleIcon'>
-                            <FaGoogle></FaGoogle>
-                            </button>
                             <Link to="/login">
                             <button className="btn btn-link">Already Have An Account?</button>
                             </Link>
                     </form>
+                            <button onClick={handleGoogleLogin}  className='googleIcon'>
+                            <FaGoogle></FaGoogle>
+                            </button>
                         </div>
                 </div>
             </div>

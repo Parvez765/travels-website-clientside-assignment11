@@ -24,15 +24,18 @@ const Login = () => {
                 form.reset()
             })
             .catch(err => console.error(err))
-        
+        }
+    
+        const handleGoogleLogin = () => {
+            
             loginWithGoogle(googleProvider)
             .then(result => {
                 const user = result.user
                 alert("User Created Successfully")
             })
-        .catch(err=> console.error(err))
-       
-    }
+            .catch(err=> console.error(err))
+        }
+    
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -62,13 +65,13 @@ const Login = () => {
                     <div className="form-control mt-6">
                     <button className="btn btn-primary">Login Now</button>
                         </div>
-                            <button  className='googleIcon'>
-                            <FaGoogle></FaGoogle>
-                            </button>
                         <Link to="/register">
                         <button className="btn btn-link">New To This Website?</button>
                         </Link>
-                </form>
+                    </form>
+                            <button onClick={handleGoogleLogin}   className='googleIcon'>
+                            <FaGoogle></FaGoogle>
+                            </button>
                     </div>
             </div>
         </div>

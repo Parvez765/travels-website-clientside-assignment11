@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../context/AuthContext';
 import logo from "../../images/logo.png"
 
 const Navbar = () => {
+    const { user, userLogout } = useContext(AuthProvider)
+
+    const handleLogOut = () => {
+        userLogout()
+            .then(() => {
+            alert("Logout Successfull")
+            })
+        .catch(err=> console.log(err))
+    }
+   
     return (
         <div className="navbar bg-base-100 container mx-auto">
             <div className="navbar-start">
@@ -23,6 +34,11 @@ const Navbar = () => {
                         </div>
                         <hr />
                         <li><Link to="/">Home</Link></li>
+                        {
+                             user?.email ? <>
+                                 <li><Link to="/login">Logout</Link></li>
+                            </> : <li><Link to="/login">Login</Link></li>
+                        }
                     
                   
                   
@@ -37,7 +53,13 @@ const Navbar = () => {
                </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                <li><Link to="/">Home</Link></li>
+                    <li><Link to="/">Home</Link></li>
+                    
+                    {
+                      user?.email ? <>
+                        <li><Link to="/login"><button onClick={handleLogOut}>Logout</button></Link></li>
+                    </> : <li><Link to="/login">Login</Link></li>
+                    }
               
                 </ul>
             </div>
