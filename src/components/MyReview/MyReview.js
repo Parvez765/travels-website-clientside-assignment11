@@ -26,7 +26,10 @@ const MyReview = () => {
         const proceed = window.confirm("Are You Sure You Want To Delete")
         if (proceed) {
             fetch(`http://localhost:5000/myreview/${_id}`, {
-                method : "DELETE"
+                method: "DELETE",
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem("accesToken")}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
