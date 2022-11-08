@@ -33,7 +33,7 @@ const ServiceDetail = () => {
                         <Link to="/allservices">
                         <button className="btn mr-10">See All Services</button>
                         </Link>
-                   <Link to="/review"><button onClick={handleReview} className="btn btn-primary">See Review</button></Link>
+                   <Link to={`/review/${allservices._id}`}><button onClick={handleReview} className="btn btn-primary">See Review</button></Link>
                     </div>
                 </div>
             </div>
