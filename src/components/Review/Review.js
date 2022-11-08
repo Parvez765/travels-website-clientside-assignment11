@@ -15,7 +15,7 @@ const Review = () => {
                 <ReviewItem key={reviews._id} reviews={reviews}></ReviewItem>
             }
             <Link to="/"><button className='btn mb-10 mr-10'>Go Home</button></Link>
-            <Link to="/myreview"><button className='btn btn-primary mb-10'>Add Your Review</button></Link>
+            <Link to={`/customreview/${reviews._id}`}><button className='btn btn-primary mb-10'>Add Your Review</button></Link>
         </div>
     );
 };

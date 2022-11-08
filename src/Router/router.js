@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../components/AddService/AddService";
 import AllServices from "../components/AllServices/AllServices";
+import CustomReview from "../components/CustomReview/CustomReview";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import MyReview from "../components/MyReview/MyReview";
@@ -52,6 +53,13 @@ export const router = createBrowserRouter([
                   return fetch(`http://localhost:5000/allservices/${params.id}`)  
                 },
                 element: <PrivateRoute><Review></Review></PrivateRoute>
+            },
+            {
+                path: '/customreview/:id',
+                loader: ({params}) => {
+                  return fetch(`http://localhost:5000/allservices/${params.id}`) 
+                },
+                element: <CustomReview></CustomReview>
             }
         ]
     }
