@@ -12,21 +12,25 @@ const AuthContext = ({ children }) => {
     // Create New User
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // Login Exsisting User
     const loginWithExistingUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // Login Or SignUp with Google
     const loginWithGoogle = (provider) => {
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
 
     // Logout
     const userLogout = () => {
+        setLoading(true)
         return signOut(auth)
     }
 
