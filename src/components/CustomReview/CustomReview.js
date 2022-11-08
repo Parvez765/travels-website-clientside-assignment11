@@ -22,11 +22,12 @@ const CustomReview = () => {
         const img = form.img.value
         const email = form.email.value
         const review = form.review.value
+        const time = Date().toString()
         
         const customReview = {
-            name, img, email, review,
+            name, img, email, review, time,
             serviceName: allservices.name,
-            id : _id
+            
             
         }
         console.log(customReview)
@@ -38,7 +39,11 @@ const CustomReview = () => {
             body: JSON.stringify(customReview)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    alert("Thanks For The Review")
+                }
+            })
         
         
     }
@@ -52,6 +57,7 @@ const CustomReview = () => {
                 <input type="text" placeholder="Enter Your Image Link" name="img" className="input input-bordered input-primary w-full" />
                 <input type="email" placeholder="Enter Your Email" name="email" className="input input-bordered input-primary w-full" defaultValue={user?.email ? user.email : "UnVerified" } readOnly />
                 </div>
+               
                 <textarea className="textarea textarea-primary w-full container mx-auto mb-12" placeholder="Your Review" name="review"></textarea><br/>
                 <button className='btn mb-10'>Submit</button>
             </form>
