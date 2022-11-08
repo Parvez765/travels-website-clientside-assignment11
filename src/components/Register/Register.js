@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthContext';
+import { FaGoogle } from 'react-icons/fa';
+import "./Register.css"
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthProvider)
+    const { createUser, loginWithGoogle } = useContext(AuthProvider)
+    
+    const googleProvider = new GoogleAuthProvider()
 
     const handleOnSubmit = (event) => {
         event.preventDefault()
@@ -21,13 +26,20 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user
-                alert("Your Created Successfully")
+                alert("User Created Successfully")
                 form.reset()
             })
         .catch(err=> console.log(err))
-
+        
+        loginWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user
+                alert("User Created Successfully")
+            })
+        .catch(err=> console.error(err))
 
     }
+    
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -69,7 +81,10 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
                         <button className="btn btn-primary">Register Now</button>
-                        </div>
+                            </div>
+                            <button  className='googleIcon'>
+                            <FaGoogle></FaGoogle>
+                            </button>
                             <Link to="/login">
                             <button className="btn btn-link">Already Have An Account?</button>
                             </Link>

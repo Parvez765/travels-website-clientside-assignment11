@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.init';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup} from "firebase/auth"
 
 export const AuthProvider = createContext()
  const auth = getAuth(app)
@@ -20,7 +20,9 @@ const AuthContext = ({ children }) => {
     }
 
     // Login Or SignUp with Google
-    
+    const loginWithGoogle = (provider) => {
+        return signInWithPopup(auth, provider)
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -31,7 +33,7 @@ const AuthContext = ({ children }) => {
         }
     }, [])
     
-    const authInfo = {user, createUser, loginWithExistingUser}
+    const authInfo = {user, createUser, loginWithExistingUser, loginWithGoogle}
 
     return (
         <AuthProvider.Provider value={authInfo}>

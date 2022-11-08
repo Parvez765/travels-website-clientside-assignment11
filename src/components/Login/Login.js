@@ -1,10 +1,14 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthContext';
 
 const Login = () => {
 
-    const {loginWithExistingUser} = useContext(AuthProvider)
+    const { loginWithExistingUser, loginWithGoogle } = useContext(AuthProvider)
+
+    const googleProvider = new GoogleAuthProvider()
 
     const handleOnSubmit = event => {
         event.preventDefault()
@@ -18,6 +22,13 @@ const Login = () => {
                 const user = result.user
                 alert("User Logged In Successfully")
                 form.reset()
+            })
+            .catch(err => console.error(err))
+        
+            loginWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user
+                alert("User Created Successfully")
             })
         .catch(err=> console.error(err))
        
@@ -50,7 +61,10 @@ const Login = () => {
                     
                     <div className="form-control mt-6">
                     <button className="btn btn-primary">Login Now</button>
-                    </div>
+                        </div>
+                            <button  className='googleIcon'>
+                            <FaGoogle></FaGoogle>
+                            </button>
                         <Link to="/register">
                         <button className="btn btn-link">New To This Website?</button>
                         </Link>
