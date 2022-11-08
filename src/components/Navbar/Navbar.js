@@ -36,14 +36,16 @@ const Navbar = () => {
                         <li><Link to="/">Home</Link></li>
                         {
                              user?.email ? <>
-                                 <li><Link to="/login">Logout</Link></li>
+                                <li><Link to="/login">Logout</Link></li>
+                                <li><Link to="/myreview">My Review</Link></li>
+                                <li><Link to="/addservice">Add Service</Link></li>
                             </> : <li><Link to="/login">Login</Link></li>
                         }
                     
                   
                   
                 </ul>
-                <div className='flex items-center justify-center '>
+                <div className='flex items-center justify-end '>
                     </div>
                     <img className='w-[50px] hidden lg:block' src={logo} alt="" />
                     </div> 
@@ -57,7 +59,10 @@ const Navbar = () => {
                     
                     {
                       user?.email ? <>
-                        <li><Link to="/login"><button onClick={handleLogOut}>Logout</button></Link></li>
+                            <li><Link to="/login"><button onClick={handleLogOut}>Logout</button></Link></li>
+                            <li><Link to="/myreview">My Review</Link></li>
+                            <li><Link to="/addservice">Add Service</Link></li>
+                            
                     </> : <li><Link to="/login">Login</Link></li>
                     }
               
