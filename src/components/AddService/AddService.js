@@ -5,7 +5,7 @@ const AddService = () => {
     useTitle("Add Service")
     return (
         <div>
-            <h2>Hello All</h2>
+            <h2 className='text-3xl font-bold'>Welcome to Add Service Page</h2>
         </div>
     );
 };

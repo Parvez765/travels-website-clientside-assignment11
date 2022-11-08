@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useEffect, useState }  from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import ReviewItem from './ReviewItem/ReviewItem';
@@ -8,6 +8,9 @@ const Review = () => {
     useTitle("Review")
     const { review1, reviewImg1, reviewrname1, review2, reviewImg2,reviewrname2, name } = reviews
     console.log(review1, reviews)
+
+    
+
     return (
         <div>
             <h2 className='text-3xl font-bold mt-8 mb-8'>What Our Happy Clients Says About<br/> {name}</h2>
