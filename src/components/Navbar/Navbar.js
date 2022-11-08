@@ -42,7 +42,7 @@ const Navbar = () => {
                             </> : <li><Link to="/login">Login</Link></li>
                         }
                     
-                  
+                    <li><Link to="/blog">Blog</Link></li>
                   
                 </ul>
                 <div className='flex items-center justify-end '>
@@ -65,7 +65,7 @@ const Navbar = () => {
                             
                     </> : <li><Link to="/login">Login</Link></li>
                     }
-              
+                    <li><Link to="/blog">Blog</Link></li>
                 </ul>
             </div>
             
