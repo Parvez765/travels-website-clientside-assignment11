@@ -5,8 +5,10 @@ import img2 from "../../images/img2-01.jpg"
 import img3 from "../../images/img3-01.png"
 import img4 from "../../images/Img4-01.jpg"
 import Services from '../Services/Services';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+    useTitle("Home")
     return (
         <div>
             <div className='grid md:grid-cols-2 mt-12 items-center justify-center'>

@@ -3,10 +3,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { AuthProvider } from '../../context/AuthContext';
+import useTitle from '../../hooks/useTitle';
 
 const ServiceDetail = () => {
     const allservices = useLoaderData()
     const { user } = useContext(AuthProvider)
+    useTitle("Service Details")
     
     const handleReview = () => {
         if (!user?.email) {

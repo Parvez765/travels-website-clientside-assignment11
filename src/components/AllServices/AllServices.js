@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import AllServiceCard from '../AllServiceCard/AllServiceCard';
 
 
 const AllServices = () => {
     const allservices = useLoaderData()
+    useTitle("All Services")
     console.log(allservices)
    
     return (

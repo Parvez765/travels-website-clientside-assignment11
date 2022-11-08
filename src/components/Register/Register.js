@@ -4,10 +4,12 @@ import { AuthProvider } from '../../context/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
 import "./Register.css"
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
 
     const { createUser, loginWithGoogle } = useContext(AuthProvider)
+    useTitle("register")
     
     const googleProvider = new GoogleAuthProvider()
 
