@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthProvider } from '../../context/AuthContext';
 import useTitle from '../../hooks/useTitle';
 
@@ -29,7 +30,13 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
-                alert("User Logged In Successfully")
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'Success',
+                    title: 'Login Successfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
 
                 fetch(`http://localhost:5000/jwt`, {
                     method: "POST",

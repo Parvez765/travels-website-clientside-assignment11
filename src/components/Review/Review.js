@@ -7,7 +7,7 @@ const Review = () => {
     const reviews = useLoaderData()
     useTitle("Review")
     const { review1, reviewImg1, reviewrname1, review2, reviewImg2,reviewrname2, name } = reviews
-    console.log(review1, reviews)
+    // console.log(review1, reviews)
 
     
 

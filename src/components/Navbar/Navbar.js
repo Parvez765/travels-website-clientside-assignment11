@@ -29,7 +29,7 @@ const Navbar = () => {
                                 <img className='w-[50px]' src={logo} alt="" />
                             </div>
                             <div>
-                            <h2 className='font-bold'>Travels Care</h2>
+                            <h2 className='font-bold'>Parvez's Tour House</h2>
                             </div>
                         </div>
                         <hr />
@@ -50,7 +50,7 @@ const Navbar = () => {
                     <img className='w-[50px] hidden lg:block' src={logo} alt="" />
                     </div> 
                     <div>
-                        <h2 className='font-bold hidden lg:block'>Travels Care</h2>
+                        <h2 className='font-bold hidden lg:block'>Parvez's Tour House</h2>
                     </div>
                </div>
             <div className="navbar-center hidden lg:flex">

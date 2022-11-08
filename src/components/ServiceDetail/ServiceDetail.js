@@ -4,6 +4,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { AuthProvider } from '../../context/AuthContext';
 import useTitle from '../../hooks/useTitle';
+import Swal from 'sweetalert2';
 
 const ServiceDetail = () => {
     const allservices = useLoaderData()
@@ -12,7 +13,13 @@ const ServiceDetail = () => {
     
     const handleReview = () => {
         if (!user?.email) {
-            alert("Please Login To Add A Review")
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Login To Add A Review',
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
     }
    

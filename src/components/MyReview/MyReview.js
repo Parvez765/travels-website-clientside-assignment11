@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthContext';
 import useTitle from '../../hooks/useTitle';
 import MyReviewList from './MyReviewList/MyReviewList';
@@ -7,19 +8,27 @@ import MyReviewList from './MyReviewList/MyReviewList';
 const MyReview = () => {
     useTitle("My Review")
 
-    const {user} = useContext(AuthProvider)
+   
+    const { user } = useContext(AuthProvider)
+    
     
     const [reviews, setReviews] = useState([])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/cutomreview?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accesToken")}`
-            }
-        })
+    const getReview = () => {
+
+        fetch(`http://localhost:5000/customreview?email=${user?.email}`)
+        // {
+        //     headers: {
+        //         authorization: `Bearer ${localStorage.getItem("accesToken")}`
+        //     }
+        // }
             .then(res => res.json())
             .then(data => setReviews(data))
         
+    }
+
+    useEffect(() => {
+        getReview()
     }, [user?.email])
 
     const handleDelete = (_id) => {
@@ -28,7 +37,7 @@ const MyReview = () => {
             fetch(`http://localhost:5000/myreview/${_id}`, {
                 method: "DELETE",
                 headers: {
-                    authorization: `Bearer ${localStorage.getItem("accesToken")}`
+                    authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             })
                 .then(res => res.json())
@@ -44,12 +53,13 @@ const MyReview = () => {
     }
     return (
         <div>
+            
             {
-                reviews ? <h2 className='text-2xl font-bold'>You Have {reviews.length} Reviews</h2> : "No Review Found"
+                reviews.length === 0 ?  <h2 className='text-2xl font-bold'>No Review Found</h2> : <h2 className='text-2xl font-bold'>You Have {reviews.length} Reviews</h2>
             } 
             <div>
                 {
-                    reviews.map(rev => <MyReviewList key={rev._id} rev={rev} handleDelete={handleDelete}></MyReviewList>)
+                    reviews.map(rev => <MyReviewList key={rev._id} rev={rev} handleDelete={handleDelete} getReview={getReview}></MyReviewList>)
                 }
                 
             </div>

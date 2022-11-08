@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
@@ -26,7 +27,13 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                alert("Thanks For Adding New Service. Please Check All Service Page")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'Success',
+                        title: 'Thanks For Adding A New Service.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
             }
         })
     }
