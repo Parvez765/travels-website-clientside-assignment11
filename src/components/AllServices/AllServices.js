@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthProvider } from '../../context/AuthContext';
 import useTitle from '../../hooks/useTitle';
 import AllServiceCard from '../AllServiceCard/AllServiceCard';
 
@@ -7,7 +8,18 @@ import AllServiceCard from '../AllServiceCard/AllServiceCard';
 const AllServices = () => {
     const allservices = useLoaderData()
     useTitle("All Services")
-    console.log(allservices)
+    // console.log(allservices)
+
+    const {loader} = useContext(AuthProvider)
+    
+    if (loader) {
+        return <div className='flex justify-center items-center mb-5'>
+            <span class="flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+        </div>
+    }
    
     return (
         <div>

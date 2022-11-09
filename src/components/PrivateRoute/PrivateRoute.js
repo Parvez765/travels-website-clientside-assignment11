@@ -9,12 +9,12 @@ const PrivateRoute = ({children}) => {
     const { user, loading } = useContext(AuthProvider)
 
     if (loading) {
-        return <button type="button" class="bg-indigo-500 ..." disabled>
-        <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-         
-        </svg>
-        Processing...
-      </button>
+        return <div className='flex justify-center items-center mb-5'>
+            <span class="flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+        </div>
      
     }
 

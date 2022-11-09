@@ -3,6 +3,7 @@ import AddService from "../components/AddService/AddService";
 import AllServices from "../components/AllServices/AllServices";
 import Blog from "../components/Blog/Blog";
 import CustomReview from "../components/CustomReview/CustomReview";
+import Error from "../components/Error/Error";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import MyReview from "../components/MyReview/MyReview";
@@ -14,21 +15,21 @@ import Main from "../Layout/Main";
 
 export const router = createBrowserRouter([
     {
-        path: "/", element: <Main></Main>, children: [
+        path: "/", element: <Main></Main>, errorElement:<Error></Error>, children: [
             {
                 path: "/", element: <Home></Home>
             },
             {
                 path: "/allservices",
                 loader: () => {
-                    return fetch("http://localhost:5000/allservices")
+                    return fetch("https://assignment11-server-side.vercel.app/allservices")
                 },
                 element: <AllServices></AllServices>
             },
             {
                 path: "/allservices/:id",
                 loader: ({ params }) => {
-                  return fetch(`http://localhost:5000/allservices/${params.id}`)  
+                  return fetch(`https://assignment11-server-side.vercel.app/allservices/${params.id}`)  
                 },
                 element: <ServiceDetail></ServiceDetail>
             },
@@ -52,16 +53,16 @@ export const router = createBrowserRouter([
             {
                 path: "/review/:id",
                 loader: ({ params }) => {
-                  return fetch(`http://localhost:5000/allservices/${params.id}`)  
+                  return fetch(`https://assignment11-server-side.vercel.app/allservices/${params.id}`)  
                 },
                 element: <PrivateRoute><Review></Review></PrivateRoute>
             },
             {
                 path: '/customreview/:id',
                 loader: ({params}) => {
-                  return fetch(`http://localhost:5000/allservices/${params.id}`) 
+                  return fetch(`https://assignment11-server-side.vercel.app/allservices/${params.id}`) 
                 },
-                element: <CustomReview></CustomReview>
+                element: <PrivateRoute><CustomReview></CustomReview></PrivateRoute>
             },
             {
                 path: "/blog",

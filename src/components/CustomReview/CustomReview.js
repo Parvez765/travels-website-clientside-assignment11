@@ -31,7 +31,7 @@ const CustomReview = () => {
             
         }
         console.log(customReview)
-        fetch(`http://localhost:5000/customreview/${_id}`, {
+        fetch(`https://assignment11-server-side.vercel.app/customreview/${_id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

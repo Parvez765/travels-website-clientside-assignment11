@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../../context/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
@@ -12,6 +12,8 @@ const Register = () => {
     useTitle("register")
     
     const googleProvider = new GoogleAuthProvider()
+    const [spinner, setSpinner] = useState(false)
+
 
     const handleOnSubmit = (event) => {
         event.preventDefault()
@@ -84,7 +86,16 @@ const Register = () => {
                         </label>
                         </div>
                         <div className="form-control mt-6">
-                        <button className="btn btn-primary">Register Now</button>
+                        <button className="btn btn-primary" onClick={() => setSpinner(true)}>
+                                    {
+                                        spinner ? <div className='flex justify-center items-center mb-5'>
+                                        <span class="flex h-3 w-3">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                                        </span>
+                                    </div> : "Register Now"
+                                    }
+                                    </button>
                             </div>
                             <Link to="/login">
                             <button className="btn btn-link">Already Have An Account?</button>

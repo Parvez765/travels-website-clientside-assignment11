@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -13,6 +13,8 @@ const Login = () => {
     useTitle("Login")
 
     const { loginWithExistingUser, loginWithGoogle } = useContext(AuthProvider)
+
+    const [spinner, setSpinner] = useState(false)
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -38,7 +40,7 @@ const Login = () => {
                     timer: 1500
                   })
 
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://assignment11-server-side.vercel.app/jwt`, {
                     method: "POST",
                     headers: {
                         "content-type" : "application/json"
@@ -67,7 +69,7 @@ const Login = () => {
                 }
                 alert("User Created Successfully")
 
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://assignment11-server-side.vercel.app/jwt`, {
                     method: "POST",
                     headers: {
                         "content-type" : "application/json"
@@ -83,6 +85,7 @@ const Login = () => {
             })
             .catch(err=> console.error(err))
         }
+    
     
 
     return (
@@ -111,7 +114,16 @@ const Login = () => {
                     </div>
                     
                     <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login Now</button>
+                                <button className="btn btn-primary" onClick={() => setSpinner(true)}>
+                                    {
+                                        spinner ? <div className='flex justify-center items-center mb-5'>
+                                        <span class="flex h-3 w-3">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                                        </span>
+                                    </div> : "Login Now"
+                                    }
+                                    </button>
                         </div>
                         <Link to="/register">
                         <button className="btn btn-link">New To This Website?</button>

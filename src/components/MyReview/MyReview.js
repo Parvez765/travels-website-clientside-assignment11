@@ -16,12 +16,11 @@ const MyReview = () => {
 
     const getReview = () => {
 
-        fetch(`http://localhost:5000/customreview?email=${user?.email}`)
-        // {
-        //     headers: {
-        //         authorization: `Bearer ${localStorage.getItem("accesToken")}`
-        //     }
-        // }
+        fetch(`https://assignment11-server-side.vercel.app/customreview?email=${user?.email}`,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accesToken")}`
+            }
+        })
             .then(res => res.json())
             .then(data => setReviews(data))
         
@@ -31,10 +30,10 @@ const MyReview = () => {
         getReview()
     }, [user?.email])
 
-    const handleDelete = (_id) => {
+    const handleDelete = (id) => {
         const proceed = window.confirm("Are You Sure You Want To Delete")
         if (proceed) {
-            fetch(`http://localhost:5000/myreview/${_id}`, {
+            fetch(`https://assignment11-server-side.vercel.app/deletereview/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -44,13 +43,32 @@ const MyReview = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert("Delet Complete")
-                        const remaining = reviews.filter(review => review._id !== _id)
+                        const remaining = reviews.filter(review => review._id !== id)
                         setReviews(remaining)
                     }
                 })
             
         }
     }
+
+    const handleUpdate = (id, updateReview) => {
+        console.log("This is",id)
+        const reviewMessage= {
+            message : updateReview
+        }
+        
+        fetch(`https://assignment11-server-side.vercel.app/updatereview/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(reviewMessage)
+        })
+            .then(res => res.json())
+            .then(data => getReview())
+        
+    } 
+
     return (
         <div>
             
@@ -59,7 +77,7 @@ const MyReview = () => {
             } 
             <div>
                 {
-                    reviews.map(rev => <MyReviewList key={rev._id} rev={rev} handleDelete={handleDelete} getReview={getReview}></MyReviewList>)
+                    reviews?.map(rev => <MyReviewList key={rev._id} rev={rev} handleDelete={handleDelete} handleUpdate={handleUpdate} getReview={getReview}></MyReviewList>)
                 }
                 
             </div>

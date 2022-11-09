@@ -3,29 +3,14 @@ import { FaTrash, FaUndoAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
-const MyReviewList = ({ rev, handleDelete, getReview }) => {
+const MyReviewList = ({ rev, handleDelete, getReview, handleUpdate }) => {
     const {_id, img, name, time, review } = rev
-    console.log(img)
+    console.log(_id)
 
     const [updateReview, setUpdateReview] = useState("")
     console.log(updateReview)
 
-    const handleUpdate = (id) => {
-        const reviewMessage= {
-            message : updateReview
-        }
-        
-        fetch(`http://localhost:5000/myreview/${id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify(reviewMessage)
-        })
-            .then(res => res.json())
-            .then(data => getReview())
-        
-    } 
+   
     
     return (
         <div>
@@ -41,7 +26,7 @@ const MyReviewList = ({ rev, handleDelete, getReview }) => {
                     <div className="modal-action">
                         <textarea className="textarea textarea-primary" placeholder="Update Review" onKeyUp={(event) => setUpdateReview(event.target.value)}></textarea>
                         
-                    <label htmlFor="my-modal-6" className="btn" onClick={()=> handleUpdate(_id)}>Yay!</label>
+                    <label htmlFor="my-modal-6" className="btn" onClick={()=> handleUpdate(_id, updateReview)}>Update</label>
                     </div>
                 </div>
                 </div>
